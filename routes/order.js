@@ -14,8 +14,8 @@ const { updateStock } = require("../controllers/product");
 const router = express.Router();
 
 // PARAMETER EXTRECTING
-router.params("userId", getUserById);
-router.params("orderId", getOrderById);
+router.param("userId", getUserById);
+router.param("orderId", getOrderById);
 
 // ACTUAL ROUTES
 
