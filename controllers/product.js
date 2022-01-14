@@ -117,14 +117,13 @@ exports.updateProduct = (req, res) => {
 
 // product listing
 exports.getAllProducts = (req, res) => {
-  let limit = req.quary.limit ? parseInt(req.quary.limit) : 8;
+  // let limit = req.quary.limit ? parseInt(req.quary.limit) : 8;
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
   Product.find()
     .select("-photo") // it will select all except photo
     .populate("category")
     .sort([[sortBy, "asc"]])
-    .limit(limit)
-    .exex((err, products) => {
+    .exec((err, products) => {
       if (err) return res.status(400).json({ error: "NO PRODUCTS FOUND!" });
       res.json(products);
     });
